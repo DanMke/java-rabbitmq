@@ -1,0 +1,17 @@
+{"properties": [
+  {
+    "name": "order.rabbitmq.exchange",
+    "type": "java.lang.String",
+    "description": "A description for 'order.rabbitmq.exchange'"
+  },
+  {
+    "name": "order.rabbitmq.queue",
+    "type": "java.lang.String",
+    "description": "A description for 'order.rabbitmq.queue'"
+  },
+  {
+    "name": "order.rabbitmq.routingkey",
+    "type": "java.lang.String",
+    "description": "A description for 'order.rabbitmq.routingkey'"
+  }
+]}
