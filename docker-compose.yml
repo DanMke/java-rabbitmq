@@ -38,6 +38,20 @@ services:
       - order-network
     restart: always
 
+  create-order:
+    depends_on:
+      - rabbitmq
+    build: ./create-order
+    restart: on-failure
+    ports:
+      - 8080:8080
+    networks:
+      - order-network
+    volumes:
+      - .m2:/root/.m2
+    stdin_open: true
+    tty: true
+
 networks:
   order-network:
     driver: bridge
