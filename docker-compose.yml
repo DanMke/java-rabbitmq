@@ -10,7 +10,7 @@ services:
       ME_CONFIG_MONGODB_ADMINPASSWORD: root
       ME_CONFIG_MONGODB_URL: mongodb://root:root@mongo:27017/
     networks:
-      - order-network
+      - db-network
     restart: always
 
   mongo:
@@ -23,7 +23,7 @@ services:
     # volumes:
     #   - ./data:/data/db
     networks:
-      - order-network
+      - db-network
     restart: always
 
   rabbitmq:
@@ -60,6 +60,7 @@ services:
       - .m2-create-order:/root/.m2
     stdin_open: true
     tty: true
+
   save-order:
     build:
       context: ./save-order
@@ -84,11 +85,38 @@ services:
       - 8082:8082
     networks:
       - order-network
+      - db-network
     volumes:
       - .m2-save-order:/root/.m2
     stdin_open: true
     tty: true
 
+  order-api:
+    build:
+      context: ./orderapi
+    environment:
+      - MONGODB_AUTHENTICATION_DATABASE=admin
+      - MONGODB_USER=root
+      - MONGODB_PASSWORD=root
+      - MONGODB_DATABASE=OrderDB
+      - MONGODB_PORT=27017
+      - MONGODB_HOST=mongo
+      - SERVER_PORT=8083
+    depends_on:
+      - mongo
+    restart: always
+    ports:
+      - 8083:8083
+    networks:
+      - order-network
+      - db-network
+    volumes:
+      - .m2-order-api:/root/.m2
+    stdin_open: true
+    tty: true
+
 networks:
+  db-network:
+    driver: bridge
   order-network:
     driver: bridge
