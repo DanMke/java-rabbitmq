@@ -1,6 +1,6 @@
 # Java-RabbitMQ
 
-## Como Rodar Local
+## Como Testar
 
 ### Aplicação
 
