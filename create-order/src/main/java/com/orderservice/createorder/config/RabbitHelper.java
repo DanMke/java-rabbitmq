@@ -26,7 +26,7 @@ public class RabbitHelper {
 
 	@Bean
 	Queue queue() {
-		Queue queue = new Queue(queueName, false);
+		Queue queue = new Queue(queueName, true);
 		rabbitAdmin.declareQueue(queue);
 		return queue;
 	}
