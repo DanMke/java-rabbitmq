@@ -3,9 +3,9 @@ import pika
 import requests
 import time
 
-ORDER_API_URL = 'http://localhost:8083'
+ORDER_API_URL = 'http://18.235.39.51:8083'
 ORDER_FILE_PATH = 'orders.json'
-RABBIMQ_HOST = 'localhost'
+RABBIMQ_HOST = '18.235.39.51'
 QUEUE_NAME = 'order.queue'
 EXCHANGE_NAME = 'order.exchange'
 ROUTING_KEY = 'order.routingkey'
