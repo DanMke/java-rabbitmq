@@ -2,8 +2,11 @@ package com.orderservice.saveorder.model;
 
 import java.util.Arrays;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+@Document(collection = "orders")
 public class Order {
   @JsonProperty("codigoPedido")
   private int codigoPedido;
