@@ -2,6 +2,7 @@ package com.orderservice.saveorder.model;
 
 import java.util.Arrays;
 
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -9,9 +10,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Document(collection = "orders")
 public class Order {
   @JsonProperty("codigoPedido")
+  @Indexed(unique=true)
   private int codigoPedido;
+
   @JsonProperty("codigoCliente")
+  @Indexed(unique=false)
   private int codigoCliente;
+
   @JsonProperty("itens")
   private Item[] itens;
 

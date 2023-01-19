@@ -17,8 +17,11 @@ public class RabbiMQConsumer {
 	public void recievedMessage(Order order) {
 		
 		System.out.println("Recieved Message From RabbitMQ: " + order.toString());
-
-		orderRepository.save(order);
+		try {
+			orderRepository.save(order);
+		} catch (Exception e) {
+			System.out.println("Error saving order: " + e.getMessage());
+		}
 	} 
   
 }
