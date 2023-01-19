@@ -41,7 +41,7 @@ Também é possível executar os testes automatizados a partir de um script Pyth
 
 Para isso é necessário ter instalado o python3 e o pip3.
 
-Então entre na pasta ```automated-test```, faça o download das dependências com o comando ```pip3 install -r requirements.txt``` e execute o código com ```python3 automated-test.py```.
+Entre na pasta ```automated-test```, faça o download das dependências com o comando ```pip3 install -r requirements.txt``` e execute o código com ```python3 automated-test.py```.
 
 OBS: O arquivo está apontando para o IP da máquina virtual na AWS em que foi feita a implantação da aplicação
 
@@ -103,7 +103,7 @@ O diagrama de arquitetura e de implantação foram desenhados antes do código e
 
 - Ferramentas: SpringBoot 3.0.1, Maven 3.6.3, Docker 20.10.21, Docker Compose 2.13.0, MongoDB 6.0, MongoDB Express 1.0.0, RabbitMQ 3.9 e GIT 2.34.1
 
-- SO: Windows 11, Ubuntu 20 e MacOS Ventura 13.1
+- SO: Windows 11 com WSL, Ubuntu 20 e MacOS Ventura 13.1
 
 ## Endpoints
 
@@ -180,15 +180,15 @@ Os endpoints também estão documentados utilizando a collection do Insomnia no 
 
 - Realizar tratamentos para possiveis exceções no Java, como de erros de conexão
 
-- Criação de uma camada de dados e repositorio pra poder facilmente ser trocado o banco de dados, e maior manutenibilidade do codigo
+- Criação de uma camada de dados para tornar transparente a conexão e o banco de dados, para poder facilmente ser trocado o banco de dados, e maior manutenibilidade do codigo
 
-- Realizar o deploy em um ambiente mais escalavel como Docker Swarm ou Kubernetes, com :oad Balance
+- Realizar o deploy em um ambiente mais escalavel como Docker Swarm ou Kubernetes, com Load Balance
 
 - Realizar a separação em vários repositórios no GIT, para maior independência, organização e coesão
 
 - Realizar commits mais atômicos
 
-- Realizar tratamento para quando o save-order não encontra a fila não quebrar o código e tentar novamente
+- Realizar tratamento para quando o save-order não encontra a fila, para não causar o exit do container e depender do restart
 
 - Padronização do código de toda a aplicação em um único idioma
 
